@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root "breeds#index"
+
   get "breeds/index"
   get "breeds/show"
   get "about", to: "static_pages#about"

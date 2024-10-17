@@ -1,11 +1,54 @@
-<h1>About This Project</h1>
-<p>This project pulls data from the Dog CEO API to display information about different dog breeds.</p>
 
-<h2>Data Sources</h2>
-<ul>
-  <li>Dog Breeds API: <a href="https://dog.ceo/dog-api/documentation/">Dog CEO API</a></li>
-  <li>Random Dog Image API: <a href="https://dog.ceo/dog-api/documentation/random">Random Dog Image API</a></li>
-</ul>
+ <div class="container mt-5">
 
-<h2>ERD Diagram</h2>
-<p>[Insert description or an image of your ERD here]</p>
+    <div class="card mb-3">
+      <div class="card-header">
+        <h2>Data Sources</h2>
+      </div>
+      <div class="card-body">
+        <p><strong>API URL:</strong> <a href="https://dog.ceo/api/breeds/list/all" class="text-info">https://dog.ceo/api/breeds/list/all</a></p>
+      <p>This API gives us a list of all dog breeds. The data is structured in a simple way: each breed is listed with any sub-breeds it may have. For example, the "australian" breed has a sub-breed called "shepherd." This data will help us store both breeds and sub-breeds in the database.</p>
+      <p><strong>Table:</strong> <code>Breeds</code></p>
+      <ul>
+        <li><strong>Columns:</strong></li>
+        <ul>
+          <li><code>name</code> - Stores the breed name (e.g., "australian")</li>
+          <li><code>sub_breed</code> - Stores the sub-breed name if available (e.g., "shepherd")</li>
+        </ul>
+      </ul>
+      </div>
+
+       <div class="card-body">
+          <p><strong>API URL:</strong> <a href="https://dog.ceo/api/breed/affenpinscher/images/random" class="text-info">https://dog.ceo/api/breed/affenpinscher/images/random</a></p>
+      <p>This API gives us a random image for a specific breed. We'll use it to store images for different dog breeds. The response includes just one piece of information: the URL of the image.</p>
+      <p><strong>Table:</strong> <code>Images</code></p>
+      <ul>
+        <li><strong>Columns:</strong></li>
+        <ul>
+          <li><code>url</code> - Stores the image URL</li>
+          <li><code>breed_id</code> - Links the image to the breed it belongs to</li>
+        </ul>
+      </ul>
+      </div>
+    </div>
+
+
+    <div class="card">
+      <div class="card-header">
+        <h2>Integration of Data</h2>
+      </div>
+      <div class="card-body">
+         <p>I'll combine these two datasets by creating two tables in our database: <code>Breeds</code> and <code>Images</code>. Each breed can have an image, and link them using the <code>breed_id</code> in the <code>Images</code> table.</p>
+      </div>
+    </div>
+
+
+    <div class="card">
+      <div class="card-header">
+        <h2>Database ERD</h2>
+      </div>
+      <div class="card-body">
+         <%= image_tag 'ERD.png', alt: 'ERD Diagram', class: 'img-fluid' %>
+      </div>
+    </div>
+  </div>
