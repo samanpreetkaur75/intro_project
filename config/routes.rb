@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "static_pages/about"
   get "breeds/index"
   get "breeds/show"
   resources :breeds, only: [ :index, :show ]
