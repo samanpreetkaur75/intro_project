@@ -1,9 +1,7 @@
-<h1>All Dog Breeds</h1>
-
 <!-- Search Form -->
 <%= form_with url: breeds_path, method: :get, local: true do %>
   <div class="input-group mb-3">
-    <input type="text" name="query" class="form-control" placeholder="Search for a breed..." aria-label="Search" value="<%= params[:query] %>">
+    <input type="text" name="query" class="form-control" placeholder="Search for a breed..." aria-label="Search">
     <div class="input-group-append">
       <button class="btn btn-outline-secondary" type="submit">Search</button>
     </div>
@@ -11,7 +9,7 @@
 
   <div class="form-group">
     <%= label_tag :sub_breed, "Filter by Sub Breed" %>
-    <%= select_tag :sub_breed, options_for_select(Breed.select(:sub_breed).distinct.pluck(:sub_breed), params[:sub_breed]), include_blank: true, class: 'form-control' %>
+    <%= select_tag :sub_breed, options_for_select(Breed.select(:sub_breed).distinct.pluck(:sub_breed)), include_blank: true, class: 'form-control' %>
   </div>
 
   <div class="input-group mb-3">
@@ -19,24 +17,30 @@
   </div>
 <% end %>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Sub Breed</th>
-      <th>Images</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @breeds.each do |breed| %>
+<% if @breeds.any? %>
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= breed.name %></td>
-        <td><%= breed.sub_breed %></td>
-        <td><%= link_to 'View Images', breed_path(breed) %></td>
+        <th>Name</th>
+        <th>Sub Breed</th>
+        <th>Images</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<!-- Pagination Links -->
-<%= paginate @breeds %>
+    </thead>
+    <tbody>
+      <% @breeds.each do |breed| %>
+        <tr>
+          <td><%= breed.name %></td>
+          <td><%= breed.sub_breed %></td>
+          <td><%= link_to 'View Images', breed_path(breed) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+  <!-- Pagination Links -->
+  <%= paginate @breeds %>
+<% else %>
+  <div class="alert alert-warning" role="alert">
+    No breeds found. Please try a different search or check back later.
+  </div>
+<% end %>
