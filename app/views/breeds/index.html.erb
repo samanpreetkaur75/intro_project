@@ -49,6 +49,7 @@
       <tr>
         <th>Name</th>
         <th>Sub Breed</th>
+        <th>Size</th>
         <th>Images</th>
         <th>Member Page</th>
       </tr>
@@ -58,6 +59,7 @@
         <tr>
           <td><%= breed.name %></td>
           <td><%= breed.sub_breed %></td>
+          <td><%= breed.size %></td>
           <td><%= link_to 'View Images', breed_path(breed) %></td>
           <td><%= link_to 'View Member page', breed_images_path(breed) %></td>
         </tr>
