@@ -7,10 +7,12 @@
     </div>
   </div>
 
-  <div class="form-group">
-    <%= label_tag :sub_breed, "Filter by Sub Breed" %>
-    <%= select_tag :sub_breed, options_for_select(Breed.select(:sub_breed).distinct.pluck(:sub_breed)), include_blank: true, class: 'form-control' %>
-  </div>
+ <div class="form-group">
+  <%= label_tag :sub_breed, "Filter by Sub Breed" %>
+  <%= select_tag :sub_breed, options_for_select([["Please select", ""]] + Breed.select(:sub_breed).distinct.pluck(:sub_breed).reject(&:blank?)), class: 'form-control' %>
+</div>
+
+
 
   <div class="input-group mb-3">
     <button class="btn btn-outline-secondary" type="submit">Filter</button>
@@ -24,6 +26,7 @@
         <th>Name</th>
         <th>Sub Breed</th>
         <th>Images</th>
+        <th>Member Page</th>
       </tr>
     </thead>
     <tbody>
@@ -32,6 +35,7 @@
           <td><%= breed.name %></td>
           <td><%= breed.sub_breed %></td>
           <td><%= link_to 'View Images', breed_path(breed) %></td>
+          <td><%= link_to 'View Member page', breed_images_path(breed) %></td>
         </tr>
       <% end %>
     </tbody>
