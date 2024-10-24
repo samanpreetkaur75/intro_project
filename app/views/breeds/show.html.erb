@@ -1,5 +1,7 @@
-<h1><%= @breed.name %> <%= @breed.sub_breed.present? ? " - #{@breed.sub_breed}" : "" %></h1>
-<h2>Images</h2>
+<h3>Breed: <%= @breed.name %> <%= @breed.sub_breed.present? ? " - #{@breed.sub_breed}" : "" %></h3>
+<h3>Size: <%= @breed.size %></h3>
+
+<h3>Images:</h3>
 <div class="row">
   <% @images.each do |image| %>
     <div class="col-md-4">
