@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
-  get "breeds/index"
-  get "breeds/show"
-  resources :breeds, only: [ :index, :show ]
+  get "images/index"
+  root "breeds#index"
+
+  get "about", to: "static_pages#about"
+
+
+resources :breeds do
+    resources :images, only: [ :index ]
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
