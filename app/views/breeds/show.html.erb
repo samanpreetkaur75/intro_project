@@ -1,0 +1,15 @@
+<h1><%= @breed.name %></h1>
+<% if @breed.sub_breed.present? %>
+  <h2>Sub-breed: <%= @breed.sub_breed %></h2>
+<% end %>
+
+<h3>Random Images:</h3>
+<ul>
+  <% @breed.images.each do |image| %>
+    <li>
+      <img src="<%= image.url %>" alt="<%= @breed.name %>" style="width: 300px; height: auto;">
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Back to Breeds', breeds_path %>

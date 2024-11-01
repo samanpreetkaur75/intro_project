@@ -1,0 +1,11 @@
+<h1>All Dog Breeds</h1>
+<ul>
+  <% @breeds.each do |breed| %>
+    <li>
+      <%= link_to breed.name, breed_path(breed) %>
+      <% if breed.sub_breed.present? %>
+        (Sub-breed: <%= breed.sub_breed %>)
+      <% end %>
+    </li>
+  <% end %>
+</ul>
