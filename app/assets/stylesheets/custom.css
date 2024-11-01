@@ -1,0 +1,42 @@
+/* app/assets/stylesheets/custom.css */
+
+/* Change the font style for all body text */
+body {
+    font-family: 'Arial, sans-serif'; /* Change to your preferred font */
+    color: #333; /* Change text color */
+}
+
+/* Change navbar styles */
+.navbar {
+    background-color: #007bff; /* Change navbar background color */
+}
+
+.navbar .nav-link {
+    color: #fff; /* Change nav link color */
+}
+
+.navbar .nav-link:hover {
+    color: #ffeb3b; /* Change hover color */
+}
+
+/* Change card header styles */
+.card-header {
+    background-color: #f8f9fa; /* Change card header background */
+    color: #495057; /* Change card header text color */
+}
+
+/* Change card body text */
+.card-body {
+    font-size: 1.1rem; /* Change font size */
+    line-height: 1.6; /* Change line height */
+}
+
+/* Add custom styles for buttons */
+.btn-custom {
+    background-color: #28a745; /* Custom button background */
+    color: #fff; /* Button text color */
+}
+
+.btn-custom:hover {
+    background-color: #218838; /* Custom button hover color */
+}
