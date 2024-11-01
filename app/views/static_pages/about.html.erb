@@ -1,66 +1,66 @@
+<div class="container mt-5">
 
- <div class="container mt-5">
-
-    <div class="card mb-3">
-      <div class="card-header">
-        <h2>Data Sources</h2>
-      </div>
-      <div class="card-body">
-        <p><strong>API URL:</strong> <a href="https://dog.ceo/api/breeds/list/all" class="text-info">https://dog.ceo/api/breeds/list/all</a></p>
-      <p>This API gives us a list of all dog breeds. The data is structured in a simple way: each breed is listed with any sub-breeds it may have. For example, the "australian" breed has a sub-breed called "shepherd." This data will help us store both breeds and sub-breeds in the database.</p>
-      <p><strong>Table:</strong> <code>Breeds</code></p>
-      <ul>
-        <li><strong>Columns:</strong></li>
-        <ul>
-          <li><code>name</code> - Stores the breed name (e.g., "australian")</li>
-          <li><code>sub_breed</code> - Stores the sub-breed name if available (e.g., "shepherd")</li>
-        </ul>
-      </ul>
-      </div>
-
-       <div class="card-body">
-          <p><strong>API URL:</strong> <a href="https://dog.ceo/api/breed/affenpinscher/images/random" class="text-info">https://dog.ceo/api/breed/affenpinscher/images/random</a></p>
-      <p>This API gives us a random image for a specific breed. We'll use it to store images for different dog breeds. The response includes just one piece of information: the URL of the image.</p>
-      <p><strong>Table:</strong> <code>Images</code></p>
-      <ul>
-        <li><strong>Columns:</strong></li>
-        <ul>
-          <li><code>url</code> - Stores the image URL</li>
-          <li><code>breed_id</code> - Links the image to the breed it belongs to</li>
-        </ul>
-      </ul>
-      </div>
-
-      <div class="card-body">
-          <p><strong>Faker:</strong> Breed_size</p>
-      <p>Using the Faker provides a size property for each breed</p>
-      <p><strong>Table:</strong> <code>Breeds</code></p>
-      <ul>
-        <li><strong>Columns:</strong></li>
-        <ul>
-          <li><code>size</code> - The size of each breed</li>
-        </ul>
-      </ul>
-      </div>
+  <div class="card mb-4 shadow-lg">
+    <div class="card-header text-center bg-primary text-white">
+      <h2>Data Sources</h2>
     </div>
-
-
-    <div class="card">
-      <div class="card-header">
-        <h2>Integration of Data</h2>
-      </div>
-      <div class="card-body">
-         <p>I'll combine these two datasets by creating two tables in our database: <code>Breeds</code> and <code>Images</code>. Each breed can have an image, and link them using the <code>breed_id</code> in the <code>Images</code> table.</p>
-      </div>
-    </div>
-
-
-    <div class="card">
-      <div class="card-header">
-        <h2>Database ERD</h2>
-      </div>
-      <div class="card-body">
-         <%= image_tag 'ERD2.png', alt: 'ERD Diagram', class: 'img-fluid' %>
-      </div>
+    <div class="card-body">
+      <p>This API offers a comprehensive list of all dog breeds. Each breed is displayed alongside its potential sub-breeds. For instance, the breed <strong>"australian"</strong> includes a sub-breed known as <strong>"shepherd."</strong> This information is essential for storing both breeds and their sub-breeds in our database.</p>
+      <p><strong>Table:</strong> <code>Breeds</code></p>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <strong>Columns:</strong>
+          <ul>
+            <li><code>name</code> - Contains the name of the breed (e.g., <strong>"australian"</strong>)</li>
+            <li><code>sub_breed</code> - Contains the name of the sub-breed if it exists (e.g., <strong>"shepherd"</strong>)</li>
+          </ul>
+        </li>
+      </ul>
     </div>
   </div>
+
+  <div class="card mb-4 shadow-lg">
+    <div class="card-body">
+      <p><strong>API URL:</strong> <a href="https://dog.ceo/api/breed/affenpinscher/images/random" class="text-info">https://dog.ceo/api/breed/affenpinscher/images/random</a></p>
+      <p>This API returns a random image of a specific breed, which we will utilize to save images associated with various dog breeds. The response provides the URL of the image.</p>
+      <p><strong>Table:</strong> <code>Images</code></p>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <strong>Columns:</strong>
+          <ul>
+            <li><code>url</code> - Contains the URL of the image</li>
+            <li><code>breed_id</code> - Connects the image to its corresponding breed</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card mb-4 shadow-lg">
+    <div class="card-body">
+      <p><strong>Faker:</strong> <code>Breed_size</code></p>
+      <p>Utilizing Faker allows us to assign a size attribute to each breed.</p>
+      <p><strong>Table:</strong> <code>Breeds</code></p>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <strong>Columns:</strong>
+          <ul>
+            <li><code>size</code> - Indicates the size classification of each breed</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card mb-4 shadow-lg">
+    <div class="card-header text-center bg-secondary text-white">
+      <h2>Data Integration</h2>
+    </div>
+    <div class="card-body">
+      <p>We will integrate these datasets by establishing two tables in our database: <code>Breeds</code> and <code>Images</code>. Each breed will be able to have an associated image, which we will connect through the <code>breed_id</code> in the <code>Images</code> table.</p>
+    </div>
+  </div>
+
+  
+
+</div>
