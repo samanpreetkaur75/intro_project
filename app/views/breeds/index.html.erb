@@ -1,11 +1,71 @@
-<h1>All Dog Breeds</h1>
-<ul>
-  <% @breeds.each do |breed| %>
-    <li>
-      <%= link_to breed.name, breed_path(breed) %>
-      <% if breed.sub_breed.present? %>
-        (Sub-breed: <%= breed.sub_breed %>)
+<!-- Search Form -->
+<%= form_with url: breeds_path, method: :get, local: true do %>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="input-group mb-3">
+          <input type="text" name="query" class="form-control" placeholder="Search for a breed..." aria-label="Search">
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="submit">Search</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-4">
+        <div class="form-group">
+          <%= select_tag :sub_breed, options_for_select([["Select a sub-breed", ""]] + Breed.select(:sub_breed).distinct.pluck(:sub_breed).reject(&:blank?)), class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="input-group">
+          <button class="btn btn-primary w-100" type="submit">Filter</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col">
+      <% if @breeds.any? %>
+        <table class="table table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th>Name</th>
+              <th>Sub Breed</th>
+              <th>Size</th>
+              <th>Images</th>
+              <th>Member Page</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @breeds.each do |breed| %>
+              <tr>
+                <td><%= breed.name %></td>
+                <td><%= breed.sub_breed %></td>
+                <td><%= breed.size %></td>
+                <td><%= link_to 'View Images', breed_path(breed), class: 'btn btn-info btn-sm' %></td>
+                <td><%= link_to 'View Member Page', breed_images_path(breed), class: 'btn btn-success btn-sm' %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+        <!-- Pagination Links -->
+        <div class="d-flex justify-content-center">
+          <%= paginate @breeds, class: 'pagination pagination-lg' %>
+        </div>
+      <% else %>
+        <div class="alert alert-warning text-center" role="alert">
+          No breeds found. Please try a different search or check back later.
+
+          
+        </div>
       <% end %>
-    </li>
-  <% end %>
-</ul>
+    </div>
+  </div>
+</div>
